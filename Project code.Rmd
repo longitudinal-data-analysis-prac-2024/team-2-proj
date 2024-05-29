@@ -1,0 +1,114 @@
+---
+title: "project term 3"
+output: html_document
+date: "2024-05-28"
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup}
+#Effects of early and recent exposure to stressful contexts on externalizing behavior in middle childhood
+library("dplyr")
+library("ggplot2")
+library("tidyverse")
+library("afex")
+library("lme4")
+library("tibble")
+library("readr")
+data <- read.csv("CEDS.csv")
+theme_set(theme_bw(base_size = 15) + theme(legend.position="bottom"))
+str(data)
+summary(data)
+```
+
+```{r setup}
+required_columns <- c(
+  "ID", "riskHI", "riskLOW", "tleyopca", "tleltpcoa", 
+  "extspa", "extsta", 
+  "echrdpa", "SESA", 
+  "tinstca", "trelaca", "thosica"
+)
+# Check if all required columns are present
+missing_columns <- setdiff(required_columns, colnames(data))
+if(length(missing_columns) > 0) {
+  stop("The following required columns are missing from the dataset: ", paste(missing_columns, collapse = ", "))
+}
+```
+
+```{r setup}
+# Create a new table with the specified groupings and columns
+datasubset <- data %>%
+  select(ID, extspa, extsta, EXTSXA, echrdpa, SESA, tleyopca, tleltpcoa, riskHI, riskLOW, tinstca, trelaca, thosica)
+print(datasubset)
+
+```
+
+```{r setup}
+# Categorize the participants based on riskHI
+data <- data %>%
+  mutate(RiskCategory = ifelse(riskHI == 1, "high risk", "low/moderate risk"))
+
+# Count the number of participants in each category
+risk_counts <- data %>%
+  group_by(RiskCategory) %>%
+  summarize(Count = n())
+
+print(risk_counts)
+```
+
+```{r setup}
+datasubset <- datasubset %>% 
+  rename(externalising_problems = EXTSXA,
+         financial_hardship = echrdpa,
+         SES = SESA,
+         trauma_pastyear = tleyopca,
+         trauma_lifetime = tleltpcoa,
+         hostile_intent_score = thosica)
+```
+
+```{r setup}
+## Descriptive stats
+descriptive_stats <- datasubset %>%
+  group_by(riskHI) %>%
+  summarize(mean_externalising_pro = mean(externalising_problems, na.rm = TRUE),
+    sd_externalising_pro = sd(externalising_problems, na.rm = TRUE),
+    mean_financ = mean(financial_hardship, na.rm = TRUE),
+    sd_financ = sd(financial_hardship, na.rm = TRUE),
+    mean_SES = mean(SES, na.rm = TRUE),
+    sd_SES = sd(SES, na.rm = TRUE),
+    mean_traumapastyear = mean(trauma_pastyear, na.rm = TRUE),
+    sd_traumapastyear = sd(trauma_pastyear, na.rm = TRUE),
+    mean_traumalifetime = mean(trauma_lifetime, na.rm = TRUE),
+    sd_traumalifetime = sd(trauma_lifetime, na.rm = TRUE),
+    mean_hostile = mean(hostile_intent_score, na.rm = TRUE),
+    sd_hostile = sd(hostile_intent_score, na.rm = TRUE)
+  )
+print(descriptive_stats)
+### Select and group the specified columns with new headings
+
+```
+
+```         
+
+```
+
+```{r setup}
+
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to
+prevent printing of the R code that generated the plot.
