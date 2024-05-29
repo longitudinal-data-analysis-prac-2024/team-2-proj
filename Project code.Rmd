@@ -21,7 +21,7 @@ summary(data)
 
 ```{r setup}
 required_columns <- c(
-  "ID", "riskHI", "riskLOW", "tleyopca", "tleltpcoa", 
+  "ID", "riskHI", "riskLOW", "tleyapca", "tleltpca", 
   "extspa", "extsta", 
   "echrdpa", "SESA", 
   "tinstca", "trelaca", "thosica"
@@ -36,7 +36,7 @@ if(length(missing_columns) > 0) {
 ```{r setup}
 # Create a new table with the specified groupings and columns
 datasubset <- data %>%
-  select(ID, extspa, extsta, EXTSXA, echrdpa, SESA, tleyopca, tleltpcoa, riskHI, riskLOW, tinstca, trelaca, thosica)
+  select(ID, extspa, extsta, EXTSXA, echrdpa, SESA, tleyapca, tleltpca, riskHI, riskLOW, tinstca, trelaca, thosica)
 print(datasubset)
 
 ```
@@ -59,8 +59,8 @@ datasubset <- datasubset %>%
   rename(externalising_problems = EXTSXA,
          financial_hardship = echrdpa,
          SES = SESA,
-         trauma_pastyear = tleyopca,
-         trauma_lifetime = tleltpcoa,
+         trauma_pastyear = tleyapca,
+         trauma_lifetime = tleltpca,
          hostile_intent_score = thosica)
 ```
 
@@ -109,6 +109,3 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.
-
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
