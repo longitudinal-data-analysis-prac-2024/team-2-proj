@@ -2,10 +2,13 @@
 title: "project term 3"
 output: html_document
 date: "2024-05-28"
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup}
-#Effects of early and recent exposure to stressful contexts on externalizing behavior in middle childhood
+#Effects of parenting style on cortisol reactivity moderated by traumatic events experienced lifetime in middle childhood
 library("dplyr")
 library("ggplot2")
 library("tidyverse")
@@ -21,10 +24,8 @@ summary(data)
 
 ```{r setup}
 required_columns <- c(
-  "ID", "riskHI", "riskLOW", "tleyapca", "tleltpca", 
-  "extspa", "extsta", 
-  "echrdpa", "SESA", 
-  "tinstca", "trelaca", "thosica"
+  "ID", "riskHI", "tleltpca", "Saliva1Time", "Saliva2Time", "Saliva3Time", "Saliva4Time", "Saliva5Time", "Saliva6Time",
+  "echrdpa", "SESA"
 )
 # Check if all required columns are present
 missing_columns <- setdiff(required_columns, colnames(data))
@@ -34,78 +35,116 @@ if(length(missing_columns) > 0) {
 ```
 
 ```{r setup}
-# Create a new table with the specified groupings and columns
+# Create a new dataset, saliva7time is neglected because in the original document it is stated that the variability in this sample is too great, and it is not typically used.
 datasubset <- data %>%
-  select(ID, extspa, extsta, EXTSXA, echrdpa, SESA, tleyapca, tleltpca, riskHI, riskLOW, tinstca, trelaca, thosica)
+  select(ID, echrdpa, SESA, tleltpca, riskHI, Saliva1Time, Saliva2Time, Saliva3Time, Saliva4Time, Saliva5Time, Saliva6Time)
 print(datasubset)
-
+view(datasubset)
 ```
 
 ```{r setup}
-# Categorize the participants based on riskHI
-data <- data %>%
-  mutate(RiskCategory = ifelse(riskHI == 1, "high risk", "low/moderate risk"))
-
-# Count the number of participants in each category
-risk_counts <- data %>%
-  group_by(RiskCategory) %>%
-  summarize(Count = n())
-
-print(risk_counts)
+##transform continuous riskHI to categorical riskgroup
+datasubset$riskgroup <- factor(datasubset$riskHI, levels = c(0, 1), labels = c("moderate_low_risk", "high_risk"))
+print(datasubset)
 ```
 
 ```{r setup}
 datasubset <- datasubset %>% 
-  rename(externalising_problems = EXTSXA,
-         financial_hardship = echrdpa,
+  rename(financial_hardship = echrdpa,
          SES = SESA,
-         trauma_pastyear = tleyapca,
-         trauma_lifetime = tleltpca,
-         hostile_intent_score = thosica)
+         trauma_lifetime = tleltpca)
+view(datasubset)
 ```
+
 
 ```{r setup}
 ## Descriptive stats
 descriptive_stats <- datasubset %>%
-  group_by(riskHI) %>%
-  summarize(mean_externalising_pro = mean(externalising_problems, na.rm = TRUE),
-    sd_externalising_pro = sd(externalising_problems, na.rm = TRUE),
+  group_by(riskgroup) %>%
+  summarize(
     mean_financ = mean(financial_hardship, na.rm = TRUE),
     sd_financ = sd(financial_hardship, na.rm = TRUE),
     mean_SES = mean(SES, na.rm = TRUE),
     sd_SES = sd(SES, na.rm = TRUE),
-    mean_traumapastyear = mean(trauma_pastyear, na.rm = TRUE),
-    sd_traumapastyear = sd(trauma_pastyear, na.rm = TRUE),
-    mean_traumalifetime = mean(trauma_lifetime, na.rm = TRUE),
     sd_traumalifetime = sd(trauma_lifetime, na.rm = TRUE),
-    mean_hostile = mean(hostile_intent_score, na.rm = TRUE),
-    sd_hostile = sd(hostile_intent_score, na.rm = TRUE)
+    mean_time1 = mean(Saliva1Time, na.rm = TRUE),
+    sd_time1 = sd(Saliva1Time, na.rm = TRUE),
+    mean_time2 = mean(Saliva2Time, na.rm = TRUE),
+    sd_time2 = sd(Saliva2Time, na.rm = TRUE),
+    mean_time3 = mean(Saliva3Time, na.rm = TRUE),
+    sd_time3 = sd(Saliva3Time, na.rm = TRUE),
+    mean_time4 = mean(Saliva4Time, na.rm = TRUE),
+    sd_time4 = sd(Saliva4Time, na.rm = TRUE),
+    mean_time5 = mean(Saliva5Time, na.rm = TRUE),
+    sd_time5 = sd(Saliva5Time, na.rm = TRUE),
+    mean_time6 = mean(Saliva6Time, na.rm = TRUE),
+    sd_time6 = sd(Saliva6Time, na.rm = TRUE),
   )
 print(descriptive_stats)
-### Select and group the specified columns with new headings
-
-```
-
-```         
 
 ```
 
 ```{r setup}
-
-
+install.packages("labelled")
+install.packages("rstatix")
+install.packages("ggpubr")
+install.packages("GGally")
+install.packages("Epi")
 ```
 
-```{r}
+```{r setup}
+library("labelled")   # labeling data
+library("rstatix")    # summary statistics
+library("ggpubr")     # convenient summary statistics and plots
+library("GGally")     # advanced plot
+library("car")        # useful for anova/wald test
+library("Epi")        # easy getting CI for model coef/pred
+library("lme4")       # linear mixed-effects models
+library("lmerTest")   # test for linear mixed-effects models
+library("emmeans")    # marginal means
+library("multcomp")   # CI for linear combinations of model coef
+library("geepack")    # generalized estimating equations
+library("ggeffects")  # marginal effects, adjusted predictions
+library("gt")         # nice tables
 
+###Note: these are the packages that are typically used in longitudinal data analysis, you have to install first if you wish to use them.
 ```
 
-```{r}
+```{r Create a longitudinal data format}
+data_long <- pivot_longer(datasubset, cols = starts_with("Saliva"), 
+                            names_to = "measurement", values_to = "distance") %>% 
+  mutate(
+    timepoint = parse_number(measurement),
+    measurement = fct_inorder(paste("Measure at timepoint", timepoint))
+  ) %>% 
+  set_variable_labels(
+    timepoint = "timepoints of cortisol measurement",
+    measurement = "Label for time measurement",
+    distance = "Measurement"
+  )
 
+head(data_long)
 ```
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r mean response over time}
+group_by(data_long, timepoint) %>% 
+  get_summary_stats(distance)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+```{r a box plot}
+ggplot(data_long, aes(riskgroup, distance, fill = measurement)) +
+  geom_boxplot() +
+  labs(x = "", y = "cortisol level", fill = "")
+```
+
+```{r a trajectory plot}
+group_by(data_long, riskgroup, timepoint) %>% 
+  summarise(mean = list(mean_ci(distance)), .groups = "drop") %>% 
+  unnest_wider(mean) %>% 
+  mutate(agex = timepoint - .05 + .05*(riskgroup == "high_risk")) %>% 
+  ggplot(aes(agex, y, col = riskgroup, shape = riskgroup)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.2) +
+  geom_line() +
+  labs(x = "timepoint", y = "cortisol level", shape = "riskgroup", col = "riskgroup")
+```
