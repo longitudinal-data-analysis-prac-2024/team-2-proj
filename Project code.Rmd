@@ -148,6 +148,3 @@ group_by(data_long, riskgroup, timepoint) %>%
   geom_line() +
   labs(x = "timepoint", y = "cortisol level", shape = "riskgroup", col = "riskgroup")
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
