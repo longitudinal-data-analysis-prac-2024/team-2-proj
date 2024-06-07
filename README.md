@@ -45,3 +45,8 @@ The task was introduced approximately 55 minutes into the visit and lasted for a
 At the start of the task, participants and their opponents were fitted with blood pressure cuffs, and the participants were told they would play a video game against the opponent. The game included a 2-minute practice round followed by two competitive 3-minute rounds, observed by the opponent. The game concluded with a round played by the opponent, and the winner would receive £10. The game was rigged to ensure participants performed poorly in the practice round and competitive rounds, and the opponent always outscored them in the final round.
 
 Each round was followed by a prerecorded video message from the opponent with derogatory and taunting comments about the participant’s performance, to which the participant could respond. After the SP task, participants completed an easy task for about 5 minutes to ensure success. At the study's conclusion, participants and their parents were debriefed, and participants were unaware that the game had been rigged.
+
+
+# References
+
+Young, E. S., Doom, J. R., Farrell, A. K., Carlson, E. A., Englund, M. M., Miller, G. E., … Simpson, J. A. (2021). Life stress and cortisol reactivity: An exploratory analysis of the effects of stress exposure across life on HPA-axis functioning. Development and Psychopathology, 33(1), 301–312. doi:10.1017/S0954579419001779
