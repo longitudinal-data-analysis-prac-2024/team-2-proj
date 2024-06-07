@@ -10,24 +10,25 @@ Complementing this, Jaffee et al. (2014) explored the interactive effects of ear
 
 **Hypotheses**
 
-1. Parenting style i.e., supportive or harsh measured at age 3 would affect cortisol reactivity at age 10.​
+1. Parenting style i.e., supportive or harsh measured at age 3 would affect cortisol reactivity at age 8 to 10.​
 
-2. Traumatic events that happened across lifetime (calculated at age 10) would affect cortisol reactivity at age 10.​
+2. Traumatic events that happened across lifetime (calculated at age 8 to 10) would affect cortisol reactivity at age 8 to 10.​
 
-3. The interaction effect between parenting style measured at age 3 and lifetime traumatic events counted at age 10 would exert an effect on cortisol reactivity at age 10.
+3. The interaction effect between parenting style measured at age 3 and lifetime traumatic events counted at age 10 would exert an effect on cortisol reactivity at age 8 to 10.
 
 
 
 # Methods
 
+**Design**
+
+Between-subject experimental design. 
+
 **Participants**
 
-Four hundred children were recruited from the National Evaluation of Sure Start's study. Children were first seen at the age of 3, and followed up at the age of 8 to 10.
+Four hundred children were recruited from the National Evaluation of Sure Start's cross-sectional study. Children were first seen at the age of 3, and followed up at the age of 8 to 10. Children were recruited based on their experiences of harsh and non-supportive parenting at age 3. Harsh discipline was measured with 9 items from the parent-Child Conflict Tactics Scale (Straus et al., 1998). Supporting parenting was assessed using the eight questions on the Responsive Parenting subscale from the Home Observation for Measurement of the Environment (HOME; Caldwell & Bradley, 1984). To determine the parenting styles the children experienced, the sample was divided into two groups: high risk families were selected if they were in the top tercile of the harsh parenting variable and the bottom half of the responsivity / supportive parenting variable; low risk families were selected if they were in the bottom tercile of the harsh discipline variable and the top half of the responsivity variable. Families who were selected from the middle tercile of both variables were categorised as moderate risk families, and this kind of families was combined with low risk families for analyses. 
+
+**Measure**
 
 **Procedure**
 
-Cortisol level: cortisol was assessed from saliva samples, which were collected 20 minutes, 10 minutes, and at the end of the Social Provocation Task. At least 1 ml of passive drool was collected from participants.
-
-Social Provocation Task: the task lasted for approximately minutes. Children were told they were going to play a video game against an opponent, who was actually a confederate. The task intended to provoke anger, frustration, and embarrassment in children. Children were instructed to undergo a practice round and two competitive rounds. Children were required to move the cursor to a target on the screen as quickly and accurately as possible. The practice round was designed so that the children performed poorly. The competitive rounds were designed so that the opponent always scored more points than the child could score in the previous rounds. Each round including the practice round finished with derogatory comments about the child's poor performance.
-
-Children and parents were debriefed at the end of the study, but children were unaware that the game was manipulated.
