@@ -10,12 +10,13 @@ Complementing this, Jaffee et al. (2014) explored the interactive effects of ear
 
 **Hypotheses**
 
+Due to the inconsistent results from previous studies, we made 3 non-directional hypotheses. 
+
 1. Parenting style i.e., supportive or harsh measured at age 3 would affect cortisol reactivity at age 8 to 10.​
 
 2. Traumatic events that happened across lifetime (calculated at age 8 to 10) would affect cortisol reactivity at age 8 to 10.​
 
 3. The interaction effect between parenting style measured at age 3 and lifetime traumatic events counted at age 10 would exert an effect on cortisol reactivity at age 8 to 10.
-
 
 
 # Methods
@@ -29,6 +30,7 @@ Between-subject longtitudinal design, as cortisol levels are measured repeatedly
 Four hundred children were recruited from the National Evaluation of Sure Start's cross-sectional study. Children were first seen at the age of 3, and followed up at the age of 8 to 10. Children were recruited based on their experiences of harsh and non-supportive parenting at age 3. Harsh discipline was measured with 9 items from the parent-Child Conflict Tactics Scale (Straus et al., 1998). Supporting parenting was assessed using the eight questions on the Responsive Parenting subscale from the Home Observation for Measurement of the Environment (HOME; Caldwell & Bradley, 1984). To determine the parenting styles the children experienced, the sample was divided into two groups: high risk families were selected if they were in the top tercile of the harsh parenting variable and the bottom half of the responsivity / supportive parenting variable; low risk families were selected if they were in the bottom tercile of the harsh discipline variable and the top half of the responsivity variable. Families who were selected from the middle tercile of both variables were categorised as moderate risk families, and this kind of families was combined with low risk families for analyses. 
 
 **Measure**
+
 The number of lifetime traumatic events was counted only when caregiver and child both reported the happenings. 
 
 Cortisol levels were measured from saliva samples obtained via passive drool using Salimetrics cryovials. Children were instructed to avoid vigorous exercise and consuming snacks or dairy products after midday on the testing day. Saliva was collected at six specific times: 20 and 10 minutes before the SP task, at the end of the SP task, and 20, 45, and 65 minutes after the task. For children who did not participate in round 2 of the SP task, the saliva collection timing remained the same, except they did not provide a sample at the end of the task. A seventh sample, collected before bedtime and sent back, was typically not used due to high variability.
