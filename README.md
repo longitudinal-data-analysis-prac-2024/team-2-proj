@@ -22,13 +22,24 @@ Complementing this, Jaffee et al. (2014) explored the interactive effects of ear
 
 **Design**
 
-Between-subject experimental design. 
+Between-subject longtitudinal design, as cortisol levels are measured repeatedly. 
 
 **Participants**
 
 Four hundred children were recruited from the National Evaluation of Sure Start's cross-sectional study. Children were first seen at the age of 3, and followed up at the age of 8 to 10. Children were recruited based on their experiences of harsh and non-supportive parenting at age 3. Harsh discipline was measured with 9 items from the parent-Child Conflict Tactics Scale (Straus et al., 1998). Supporting parenting was assessed using the eight questions on the Responsive Parenting subscale from the Home Observation for Measurement of the Environment (HOME; Caldwell & Bradley, 1984). To determine the parenting styles the children experienced, the sample was divided into two groups: high risk families were selected if they were in the top tercile of the harsh parenting variable and the bottom half of the responsivity / supportive parenting variable; low risk families were selected if they were in the bottom tercile of the harsh discipline variable and the top half of the responsivity variable. Families who were selected from the middle tercile of both variables were categorised as moderate risk families, and this kind of families was combined with low risk families for analyses. 
 
 **Measure**
+The number of lifetime traumatic events was counted only when caregiver and child both reported the happenings. 
+
+Cortisol levels were measured from saliva samples obtained via passive drool using Salimetrics cryovials. Children were instructed to avoid vigorous exercise and consuming snacks or dairy products after midday on the testing day. Saliva was collected at six specific times: 20 and 10 minutes before the SP task, at the end of the SP task, and 20, 45, and 65 minutes after the task. For children who did not participate in round 2 of the SP task, the saliva collection timing remained the same, except they did not provide a sample at the end of the task. A seventh sample, collected before bedtime and sent back, was typically not used due to high variability.
+
+The samples were analyzed using the Salimetrics™ Cortisol hormone kit, a competitive immunoassay validated for salivary cortisol measurement. Samples were measured in duplicate, maintaining a coefficient of variation below 10%. Outliers were adjusted using winsorisation, and natural log transformations were applied to normalise the cortisol concentration distributions.
 
 **Procedure**
+Based on studies of Fairchild et al. (2008) and Van Goozen et al. (1998), a social provocation task (SP) was conducted with the study children during the home visit to assess variations in physiological stress response to induced psychosocial stress, as indicated by cortisol concentration and autonomic nervous system activity, along with individual subjective responses.  
 
+The task was introduced approximately 55 minutes into the visit and lasted for about 30 minutes. Children were told they were going to play a video game against an online opponent, visible via a webcam. This opponent was actually a confederate who had been previously recorded participating in the SP task. The opponent was the same age and sex as the participant.
+
+At the start of the task, participants and their opponents were fitted with blood pressure cuffs, and the participants were told they would play a video game against the opponent. The game included a 2-minute practice round followed by two competitive 3-minute rounds, observed by the opponent. The game concluded with a round played by the opponent, and the winner would receive £10. The game was rigged to ensure participants performed poorly in the practice round and competitive rounds, and the opponent always outscored them in the final round.
+
+Each round was followed by a prerecorded video message from the opponent with derogatory and taunting comments about the participant’s performance, to which the participant could respond. After the SP task, participants completed an easy task for about 5 minutes to ensure success. At the study's conclusion, participants and their parents were debriefed, and participants were unaware that the game had been rigged.
