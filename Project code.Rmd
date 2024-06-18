@@ -8,12 +8,13 @@ editor_options:
 ---
 
 ```{r setup}
-#Effects of parenting style on cortisol reactivity moderated by traumatic events experienced lifetime in middle childhood
 library("dplyr")
 library("ggplot2")
 library("tidyverse")
 library("afex")
-library("lme4")
+library("lme4")# for multilevel models
+library("lmerTest") # for p-values
+library("performance") # for ICC
 library("tibble")
 library("readr")
 data <- read.csv("CEDS.csv")
@@ -22,7 +23,7 @@ str(data)
 summary(data)
 ```
 
-```{r setup}
+```{r setup, get required columns and identify missing ons}
 required_columns <- c(
   "ID", "riskHI", "tleltpca", "Saliva1Time", "Saliva2Time", "Saliva3Time", "Saliva4Time", "Saliva5Time", "Saliva6Time",
   "echrdpa", "SESA"
@@ -34,7 +35,7 @@ if(length(missing_columns) > 0) {
 }
 ```
 
-```{r setup}
+```{r setup, creat a new dataset}
 # Create a new dataset, saliva7time is neglected because in the original document it is stated that the variability in this sample is too great, and it is not typically used.
 datasubset <- data %>%
   select(ID, echrdpa, SESA, tleltpca, riskHI, Saliva1Time, Saliva2Time, Saliva3Time, Saliva4Time, Saliva5Time, Saliva6Time)
@@ -66,6 +67,7 @@ descriptive_stats <- datasubset %>%
     sd_financ = sd(financial_hardship, na.rm = TRUE),
     mean_SES = mean(SES, na.rm = TRUE),
     sd_SES = sd(SES, na.rm = TRUE),
+    mean_traumalifetime = mean(trauma_lifetime, na.rm = TRUE),
     sd_traumalifetime = sd(trauma_lifetime, na.rm = TRUE),
     mean_time1 = mean(Saliva1Time, na.rm = TRUE),
     sd_time1 = sd(Saliva1Time, na.rm = TRUE),
@@ -81,36 +83,16 @@ descriptive_stats <- datasubset %>%
     sd_time6 = sd(Saliva6Time, na.rm = TRUE),
   )
 print(descriptive_stats)
-
+install.packages("openxlsx")
+library(openxlsx)
+write.xlsx(descriptive_stats, "~/Desktop/subset_data.xlsx")
 ```
 
-```{r setup}
-install.packages("labelled")
-install.packages("rstatix")
-install.packages("ggpubr")
-install.packages("GGally")
-install.packages("Epi")
-```
 
-```{r setup}
-library("labelled")   # labeling data
-library("rstatix")    # summary statistics
-library("ggpubr")     # convenient summary statistics and plots
-library("GGally")     # advanced plot
-library("car")        # useful for anova/wald test
-library("Epi")        # easy getting CI for model coef/pred
-library("lme4")       # linear mixed-effects models
-library("lmerTest")   # test for linear mixed-effects models
-library("emmeans")    # marginal means
-library("multcomp")   # CI for linear combinations of model coef
-library("geepack")    # generalized estimating equations
-library("ggeffects")  # marginal effects, adjusted predictions
-library("gt")         # nice tables
-
-###Note: these are the packages that are typically used in longitudinal data analysis, you have to install first if you wish to use them.
-```
 
 ```{r Create a longitudinal data format}
+install.packages("labelled") # labeling data
+library("labelled")
 data_long <- pivot_longer(datasubset, cols = starts_with("Saliva"), 
                             names_to = "measurement", values_to = "distance") %>% 
   mutate(
@@ -127,8 +109,18 @@ head(data_long)
 ```
 
 ```{r mean response over time}
-group_by(data_long, timepoint) %>% 
-  get_summary_stats(distance)
+summary_stats <- data_long %>%
+  group_by(timepoint) %>%
+  summarize(
+    mean_distance = mean(distance, na.rm = TRUE),
+    sd_distance = sd(distance, na.rm = TRUE),
+    min_distance = min(distance, na.rm = TRUE),    
+    max_distance = max(distance, na.rm = TRUE), 
+    median_distance = median(distance, na.rm = TRUE),
+    count = n(),
+    .groups = 'drop')
+print(summary_stats)
+write.xlsx(summary_stats, "~/Desktop/summary_stats.xlsx")
 ```
 
 ```{r a box plot}
@@ -138,13 +130,35 @@ ggplot(data_long, aes(riskgroup, distance, fill = measurement)) +
 ```
 
 ```{r a trajectory plot}
-group_by(data_long, riskgroup, timepoint) %>% 
-  summarise(mean = list(mean_ci(distance)), .groups = "drop") %>% 
-  unnest_wider(mean) %>% 
-  mutate(agex = timepoint - .05 + .05*(riskgroup == "high_risk")) %>% 
-  ggplot(aes(agex, y, col = riskgroup, shape = riskgroup)) +
-  geom_point() +
-  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.2) +
-  geom_line() +
-  labs(x = "timepoint", y = "cortisol level", shape = "riskgroup", col = "riskgroup")
+
+summary_stats <- data_long %>%
+  group_by(riskgroup, timepoint) %>%
+  summarise(
+    mean_distance = mean(distance, na.rm = TRUE),
+    sd_distance = sd(distance, na.rm = TRUE),
+    count = n(),
+    se_distance = sd_distance / sqrt(count), 
+    ymin = mean_distance - 1.96 * se_distance,  
+    ymax = mean_distance + 1.96 * se_distance, 
+    .groups = "drop"
+  )
+
+ggplot(summary_stats, aes(x = timepoint, y = mean_distance, color = riskgroup, shape = riskgroup)) +
+  geom_point(position = position_dodge(width = 0.1)) +
+  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.2, position = position_dodge(width = 0.1)) +
+  geom_line(aes(group = riskgroup)) +
+  labs(x = "Timepoint", y = "Cortisol Level", color = "Risk Group", shape = "Risk Group")
+```
+
+```{r a excel file of the long form data}
+install.packages("openxlsx")
+library(openxlsx)
+write.xlsx(data_long, "my_data.xlsx")
+```
+
+```{r Linear Mixed-Effects Models, risk}
+
+model <- lmer(distance ~ riskHI * + trauma_lifetime + financial_hardship + SES+ (1|ID), data = data_long, REML = FALSE)
+summary(model)
+performance::icc(model)
 ```
