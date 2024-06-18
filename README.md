@@ -100,10 +100,12 @@ Both risk groups display a similar range of variability in cortisol levels, as i
 
 ## Linear Mixed-Effects Modeling
 
-A linear mixed-effects model was applied to explore the influences of parenting styles, trauma, financial hardship, and SES on cortisol levels, with random effects accounting for variability across individuals:
+A linear mixed-effects model was applied to explore the influences of parenting styles and lifetime trauma events on cortisol levels, with random effects accounting for variability across individuals. Financial hardship and SES are included as control variables in the model to account for their potential confounding effects.​
 
 The model's AIC (0.87) and BIC (0.86) indicated a good fit relative to the complexity.
-However, fixed effects of trauma (p=.79), parenting style (p=.70), financial hardship (p=.22), SES (p=.44) did not show significant impact on cortisol levels.
+However, fixed effects of lifetime trauma (p=.79), parenting style (p=.70) did not show significant impact on cortisol levels.
+
+There is also noo significant interaction between lifetime trauma and parenting style (p=.69).​ The null hypotheses are accepted.
 
 # Discussion
 
