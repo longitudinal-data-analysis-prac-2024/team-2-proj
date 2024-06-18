@@ -99,6 +99,7 @@ Both risk groups display a similar range of variability in cortisol levels, as i
 **Figure 2**. Trajectory of Cortisol Levels Over Time by Risk Group.
 
 ## Linear Mixed-Effects Modeling
+The model comparison indicated that there were no significant differences between the two models. The model with fixed slope and interaction demonstrated slightly better performance (AIC =5639.7, BIC =5685.4). Therefore, we selected this model for our analysis.
 
 A linear mixed-effects model was applied to explore the influences of parenting styles and lifetime trauma events on cortisol levels, with random effects accounting for variability across individuals. Financial hardship and SES are included as control variables in the model to account for their potential confounding effects.​
 
