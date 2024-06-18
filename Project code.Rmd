@@ -151,8 +151,6 @@ ggplot(summary_stats, aes(x = timepoint, y = mean_distance, color = riskgroup, s
 ```
 
 ```{r a excel file of the long form data}
-install.packages("openxlsx")
-library(openxlsx)
 write.xlsx(data_long, "my_data.xlsx")
 ```
 
