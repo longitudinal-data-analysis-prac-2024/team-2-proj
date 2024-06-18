@@ -105,7 +105,7 @@ A linear mixed-effects model was applied to explore the influences of parenting 
 The model's AIC (0.87) and BIC (0.86) indicated a good fit relative to the complexity.
 However, fixed effects of lifetime trauma (p=.79), parenting style (p=.70) did not show significant impact on cortisol levels.
 
-There is also noo significant interaction between lifetime trauma and parenting style (p=.69).​ The null hypotheses are accepted.
+There is also no significant interaction between lifetime trauma and parenting style (p=.69).​ Therefore the null hypotheses are accepted.
 
 # Discussion
 
