@@ -158,33 +158,20 @@ write.xlsx(data_long, "my_data.xlsx")
 
 
 ```{r model comparison}
-# null model
-model_null <- lmer(distance ~ 1 + (1 | ID), data = data_long, REML = FALSE)
-# model without controls
-model_without_controls <- lmer(distance ~ riskHI * trauma_lifetime + (1|ID), data = data_long, REML = FALSE)
-# fixed effect
-model_fixed <- lmer(distance ~ riskHI + trauma_lifetime + financial_hardship + SES + (1 | ID), data = data_long, REML = FALSE)
-
 # interaction
 model_interaction <- lmer(distance ~ riskHI * trauma_lifetime + financial_hardship + SES+ (1|ID), data = data_long, REML = FALSE)
-
 # random slope
 model_random_slopes <- lmer(distance ~riskHI + trauma_lifetime + financial_hardship + SES + (1 + riskHI | ID), data = data_long, REML = FALSE)
 
-summary(model_null)
-summary(model_without_controls)
-summary(model_fixed)
+
 summary(model_interaction)
 summary(model_random_slopes)
 
 # comparison
-anova(model_null, model_without_controls)
 anova(model_fixed, model_interaction, model_random_slopes)
 
 # ICC
-icc(model_null)
-icc(model_fixed)
-icc(model_without_controls)
+
 icc(model_interaction)
 icc(model_random_slopes)
 ```
