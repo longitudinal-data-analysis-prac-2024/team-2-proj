@@ -168,7 +168,7 @@ summary(model_interaction)
 summary(model_random_slopes)
 
 # comparison
-anova(model_fixed, model_interaction, model_random_slopes)
+anova(model_interaction, model_random_slopes)
 
 # ICC
 
