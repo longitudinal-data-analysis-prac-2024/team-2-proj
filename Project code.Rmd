@@ -158,7 +158,7 @@ write.xlsx(data_long, "my_data.xlsx")
 
 ```{r Linear Mixed-Effects Models, risk}
 
-model <- lmer(distance ~ riskHI * + trauma_lifetime + financial_hardship + SES+ (1|ID), data = data_long, REML = FALSE)
+model <- lmer(distance ~ riskHI * trauma_lifetime + financial_hardship + SES+ (1|ID), data = data_long, REML = FALSE)
 summary(model)
 performance::icc(model)
 ```
