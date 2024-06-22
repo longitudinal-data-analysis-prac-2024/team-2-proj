@@ -27,7 +27,9 @@ Between-subject longtitudinal design, as cortisol levels are measured repeatedly
 
 **Participants**
 
-Four hundred children were recruited from the National Evaluation of Sure Start's cross-sectional study. Children were first seen at the age of 3, and followed up at the age of 8 to 10. Children were recruited based on their experiences of harsh and non-supportive parenting at age 3. Harsh discipline was measured with 9 items from the parent-Child Conflict Tactics Scale (Straus et al., 1998). Supporting parenting was assessed using the eight questions on the Responsive Parenting subscale from the Home Observation for Measurement of the Environment (HOME; Caldwell & Bradley, 1984). To determine the parenting styles the children experienced, the sample was divided into two groups: high risk families were selected if they were in the top tercile of the harsh parenting variable and the bottom half of the responsivity / supportive parenting variable; low risk families were selected if they were in the bottom tercile of the harsh discipline variable and the top half of the responsivity variable. Families who were selected from the middle tercile of both variables were categorised as moderate risk families, and this kind of families was combined with low risk families for analyses. 
+Intitially, 400 children were recruited from the National Evaluation of Sure Start's cross-sectional study. Children were first seen at the age of 3, and followed up at the age of 8 to 10. Due to dropout and missing data collection, 88 participants were excluded during data analysis, the actual sample size involved 312 participants.
+
+Children were recruited based on their experiences of harsh and non-supportive parenting at age 3. Harsh discipline was measured with 9 items from the parent-Child Conflict Tactics Scale (Straus et al., 1998). Supporting parenting was assessed using the eight questions on the Responsive Parenting subscale from the Home Observation for Measurement of the Environment (HOME; Caldwell & Bradley, 1984). To determine the parenting styles the children experienced, the sample was divided into two groups: high risk families were selected if they were in the top tercile of the harsh parenting variable and the bottom half of the responsivity / supportive parenting variable; low risk families were selected if they were in the bottom tercile of the harsh discipline variable and the top half of the responsivity variable. Families who were selected from the middle tercile of both variables were categorised as moderate risk families, and this kind of families was combined with low risk families for analyses. 
 
 **Measure**
 
@@ -54,21 +56,21 @@ In our analysis of the impact of early childhood parenting styles and lifetime t
 
 Descriptive statistics revealed variations in financial hardship, SES, and trauma across high risk and moderate/low risk groups, as detailed below:
 Moderate/Low Risk Group:
-Financial Hardship: M=8.59, SD=4.20
-SES: M=0.07, SD=0.82 
-Trauma Lifetime: M=1.11, SD=1.19
+Financial Hardship: M=8.63, SD=4.20
+SES: M=0.048, SD=0.80 
+Trauma Lifetime: M=1.10, SD=1.20
 High Risk Group:
-Financial Hardship: M=10.23, SD=4.62
-SES: M=-0.20, SD=0.71
-Trauma Lifetime: M=1.61, SD=1.57
+Financial Hardship: M=10.09, SD=4.39
+SES: M=-0.21, SD=0.69
+Trauma Lifetime: M=1.74, SD=1.66
 Descriptive statistics also revealed distinct patterns in cortisol levels across the six time points, indicating variability in cortisol reactivity which might be influenced by underlying parenting styles.
 
 **Table 1 Descriptive Statistics for Cortisol Levels by Risk Group**
 
 | Risk Group         | Mean Time 1 | SD Time 1 | Mean Time 2 | SD Time 2 | Mean Time 3 | SD Time 3 | Mean Time 4 | SD Time 4 | Mean Time 5 | SD Time 5 | Mean Time 6 | SD Time 6 |
 |--------------------|-------------|-----------|-------------|-----------|-------------|-----------|-------------|-----------|-------------|-----------|-------------|-----------|
-| Moderate Low Risk  | 15.03       | 1.63      | 15.24       | 1.66      | 15.81       | 1.65      | 16.05       | 1.65      | 16.35       | 1.67      | 16.49       | 1.68      |
-| High Risk          | 15.12       | 1.60      | 15.36       | 1.60      | 15.89       | 1.60      | 16.11       | 1.62      | 16.39       | 1.57      | 16.70       | 1.51      |
+| Moderate Low Risk  | 15.00       | 1.63      | 15.16       | 1.66      | 15.71       | 1.64      | 15.96       | 1.66      | 16.27       | 1.68      | 16.48       | 1.68      |
+| High Risk          | 15.16       | 1.59      | 15.40       | 1.58      | 15.90       | 1.55      | 16.16       | 1.57      | 16.47       | 1.51      | 16.69       | 1.52      |
 
 **Cortisol Levels Over Time**
 
@@ -77,24 +79,27 @@ The cortisol data was not normally distributed.
 
 **Table 2 Summary of Cortisol Level Changes Over Time**
 
-| Timepoint | Mean Distance | SD Distance | Min Distance | Max Distance | Median Distance |
-|-----------|---------------|-------------|--------------|--------------|-----------------|
-| 1.00      | 15.06         | 1.62        | 10.25        | 19.26        | 15.58           |
-| 2.00      | 15.27         | 1.64        | 10.35        | 19.36        | 16.12           |
-| 3.00      | 15.83         | 1.63        | 11.05        | 20.07        | 16.41           |
-| 4.00      | 16.07         | 1.64        | 11.15        | 20.18        | 16.57           |
-| 5.00      | 16.36         | 1.64        | 11.35        | 20.29        | 17.17           |
-| 6.00      | 16.54         | 1.64        | 11.45        | 20.36        | 17.25           |
+| Timepoint | Mean Distance | SD Distance | Min Distance | Max Distance | Median Distance | Count |
+|-----------|---------------|-------------|--------------|--------------|-----------------|-------|
+| 1         | 15.01         | 1.62        | 10.25        | 19.26        | 15.55           | 312   |
+| 2         | 15.22         | 1.65        | 10.35        | 19.36        | 16.09           | 312   |
+| 3         | 15.76         | 1.62        | 11.05        | 20.07        | 16.38           | 312   |
+| 4         | 16.01         | 1.63        | 11.15        | 20.18        | 16.54           | 312   |
+| 5         | 16.31         | 1.64        | 11.35        | 20.29        | 17.14           | 312   |
+| 6         | 16.53         | 1.64        | 11.45        | 20.36        | 17.25           | 312   |
+
 
 Visual analyses, including box plots (figure 1) and trajectory plots (figure 2), were utilised to further dissect the relationship between risk groups and cortisol levels. 
+
 The median cortisol levels at different timepoints show a consistent pattern of slightly increases across the timepoints within each risk group, suggesting relatively increasing cortisol levels across these measurements.
+
 Both risk groups display a similar range of variability in cortisol levels, as indicated by the spread and overlap of the IQRs across the timepoints. There is no immediately apparent systematic difference in the level of cortisol between the positive or harsh parenting groups. There are several outliers in both groups across different timepoints, indicating some individual measurements that are significantly higher or lower than the majority. These could represent individual differences in cortisol reactivity or measurement errors and may warrant further investigation.
 
-<img width="415" alt="image" src="https://github.com/longitudinal-data-analysis-prac-2024/team-2-proj/assets/156832814/ee024032-67fa-4866-8393-9a44f35596fa">
+<img width="592" alt="Screenshot 2024-06-22 at 15 26 50" src="https://github.com/longitudinal-data-analysis-prac-2024/team-2-proj/assets/156832814/77b11029-202a-40c0-9d4f-8cba1aa4e72f">
 
 **Figure 1**. Cortisol levels at six different timepoints for two risk groups: moderate_low_risk and high_risk. Each colour represents a different timepoint (red, yellow, green, cyan, blue, and magenta).
 
-<img width="415" alt="image" src="https://github.com/longitudinal-data-analysis-prac-2024/team-2-proj/assets/156832814/767ce4d1-c792-45c3-910e-a028403acfbe">
+<img width="591" alt="Screenshot 2024-06-22 at 15 26 28" src="https://github.com/longitudinal-data-analysis-prac-2024/team-2-proj/assets/156832814/f8219dd7-8de0-4c77-80b6-34ac0502cebd">
 
 **Figure 2**. Trajectory of Cortisol Levels Over Time by Risk Group.
 
