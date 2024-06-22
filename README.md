@@ -27,7 +27,9 @@ Between-subject longtitudinal design, as cortisol levels are measured repeatedly
 
 **Participants**
 
-Four hundred children were recruited from the National Evaluation of Sure Start's cross-sectional study. Children were first seen at the age of 3, and followed up at the age of 8 to 10. Children were recruited based on their experiences of harsh and non-supportive parenting at age 3. Harsh discipline was measured with 9 items from the parent-Child Conflict Tactics Scale (Straus et al., 1998). Supporting parenting was assessed using the eight questions on the Responsive Parenting subscale from the Home Observation for Measurement of the Environment (HOME; Caldwell & Bradley, 1984). To determine the parenting styles the children experienced, the sample was divided into two groups: high risk families were selected if they were in the top tercile of the harsh parenting variable and the bottom half of the responsivity / supportive parenting variable; low risk families were selected if they were in the bottom tercile of the harsh discipline variable and the top half of the responsivity variable. Families who were selected from the middle tercile of both variables were categorised as moderate risk families, and this kind of families was combined with low risk families for analyses. 
+Intitially, 400 children were recruited from the National Evaluation of Sure Start's cross-sectional study. Children were first seen at the age of 3, and followed up at the age of 8 to 10. Due to dropout and missing data collection, 88 participants were excluded during data analysis, the actual sample size involved 312 participants.
+
+Children were recruited based on their experiences of harsh and non-supportive parenting at age 3. Harsh discipline was measured with 9 items from the parent-Child Conflict Tactics Scale (Straus et al., 1998). Supporting parenting was assessed using the eight questions on the Responsive Parenting subscale from the Home Observation for Measurement of the Environment (HOME; Caldwell & Bradley, 1984). To determine the parenting styles the children experienced, the sample was divided into two groups: high risk families were selected if they were in the top tercile of the harsh parenting variable and the bottom half of the responsivity / supportive parenting variable; low risk families were selected if they were in the bottom tercile of the harsh discipline variable and the top half of the responsivity variable. Families who were selected from the middle tercile of both variables were categorised as moderate risk families, and this kind of families was combined with low risk families for analyses. 
 
 **Measure**
 
@@ -46,7 +48,93 @@ At the start of the task, participants and their opponents were fitted with bloo
 
 Each round was followed by a prerecorded video message from the opponent with derogatory and taunting comments about the participant’s performance, to which the participant could respond. After the SP task, participants completed an easy task for about 5 minutes to ensure success. At the study's conclusion, participants and their parents were debriefed, and participants were unaware that the game had been rigged.
 
+# Results
 
-# References
+In our analysis of the impact of early childhood parenting styles and lifetime traumatic events on cortisol reactivity, we conducted a series of analyses using a well-defined cohort. We removed data columns which contain N/A values. The dataset, after verification of key variables and handling missing data, included measures of financial hardship, socio-economic status (SES), and trauma exposure, alongside cortisol measurements at multiple timepoints.
 
-Young, E. S., Doom, J. R., Farrell, A. K., Carlson, E. A., Englund, M. M., Miller, G. E., … Simpson, J. A. (2021). Life stress and cortisol reactivity: An exploratory analysis of the effects of stress exposure across life on HPA-axis functioning. Development and Psychopathology, 33(1), 301–312. doi:10.1017/S0954579419001779
+**Descriptive Statistics within Different Groups**
+
+Descriptive statistics revealed variations in financial hardship, SES, and trauma across high risk and moderate/low risk groups, as detailed below:
+Moderate/Low Risk Group:
+Financial Hardship: M=8.63, SD=4.20
+SES: M=0.048, SD=0.80 
+Trauma Lifetime: M=1.10, SD=1.20
+High Risk Group:
+Financial Hardship: M=10.09, SD=4.39
+SES: M=-0.21, SD=0.69
+Trauma Lifetime: M=1.74, SD=1.66
+Descriptive statistics also revealed distinct patterns in cortisol levels across the six time points, indicating variability in cortisol reactivity which might be influenced by underlying parenting styles.
+
+**Table 1 Descriptive Statistics for Cortisol Levels by Risk Group**
+
+| Risk Group         | Mean Time 1 | SD Time 1 | Mean Time 2 | SD Time 2 | Mean Time 3 | SD Time 3 | Mean Time 4 | SD Time 4 | Mean Time 5 | SD Time 5 | Mean Time 6 | SD Time 6 |
+|--------------------|-------------|-----------|-------------|-----------|-------------|-----------|-------------|-----------|-------------|-----------|-------------|-----------|
+| Moderate Low Risk  | 15.00       | 1.63      | 15.16       | 1.66      | 15.71       | 1.64      | 15.96       | 1.66      | 16.27       | 1.68      | 16.48       | 1.68      |
+| High Risk          | 15.16       | 1.59      | 15.40       | 1.58      | 15.90       | 1.55      | 16.16       | 1.57      | 16.47       | 1.51      | 16.69       | 1.52      |
+
+**Cortisol Levels Over Time**
+
+The longitudinal data format allowed us to assess cortisol levels over multiple timepoints. We observed that cortisol levels varied over time as showed below, with descriptive analysis indicating fluctuations in mean, standard deviation, minimum, maximum, and median levels.
+The cortisol data was not normally distributed. 
+
+**Table 2 Summary of Cortisol Level Changes Over Time**
+
+| Timepoint | Mean Distance | SD Distance | Min Distance | Max Distance | Median Distance | Count |
+|-----------|---------------|-------------|--------------|--------------|-----------------|-------|
+| 1         | 15.01         | 1.62        | 10.25        | 19.26        | 15.55           | 312   |
+| 2         | 15.22         | 1.65        | 10.35        | 19.36        | 16.09           | 312   |
+| 3         | 15.76         | 1.62        | 11.05        | 20.07        | 16.38           | 312   |
+| 4         | 16.01         | 1.63        | 11.15        | 20.18        | 16.54           | 312   |
+| 5         | 16.31         | 1.64        | 11.35        | 20.29        | 17.14           | 312   |
+| 6         | 16.53         | 1.64        | 11.45        | 20.36        | 17.25           | 312   |
+
+
+Visual analyses, including box plots (figure 1) and trajectory plots (figure 2), were utilised to further dissect the relationship between risk groups and cortisol levels. 
+
+The median cortisol levels at different timepoints show a consistent pattern of slightly increases across the timepoints within each risk group, suggesting relatively increasing cortisol levels across these measurements.
+
+Both risk groups display a similar range of variability in cortisol levels, as indicated by the spread and overlap of the IQRs across the timepoints. There is no immediately apparent systematic difference in the level of cortisol between the positive or harsh parenting groups. There are several outliers in both groups across different timepoints, indicating some individual measurements that are significantly higher or lower than the majority. These could represent individual differences in cortisol reactivity or measurement errors and may warrant further investigation.
+
+<img width="592" alt="Screenshot 2024-06-22 at 15 26 50" src="https://github.com/longitudinal-data-analysis-prac-2024/team-2-proj/assets/156832814/77b11029-202a-40c0-9d4f-8cba1aa4e72f">
+
+**Figure 1**. Cortisol levels at six different timepoints for two risk groups: moderate_low_risk and high_risk. Each colour represents a different timepoint (red, yellow, green, cyan, blue, and magenta).
+
+<img width="591" alt="Screenshot 2024-06-22 at 15 26 28" src="https://github.com/longitudinal-data-analysis-prac-2024/team-2-proj/assets/156832814/f8219dd7-8de0-4c77-80b6-34ac0502cebd">
+
+**Figure 2**. Trajectory of Cortisol Levels Over Time by Risk Group.
+
+## Linear Mixed-Effects Modeling
+
+As the cortisol measurements were not normally distributed, we applied the logarithmic transformation to make it more normally distributed so it can fit with the linear mixed-effect model. 
+The model comparison indicated that there were no significant differences between the two models. The model with fixed slope and interaction demonstrated slightly better performance (AIC =5639.7, BIC =5685.4). Therefore, we selected this model for our analysis.
+
+A linear mixed-effects model was applied to explore the influences of parenting styles and lifetime trauma events on cortisol levels, with random effects accounting for variability across individuals. Financial hardship and SES are included as control variables in the model to account for their potential confounding effects.​
+
+The model's AIC (0.87) and BIC (0.86) indicated a good fit relative to the complexity.
+However, fixed effects of lifetime trauma (p=.79), parenting style (p=.70) did not show significant impact on cortisol levels.
+
+There is also no significant interaction between lifetime trauma and parenting style (p=.69).​ Therefore the null hypotheses are accepted.
+
+# Discussion
+
+## Interpretation of Findings
+
+The lack of significant findings from the linear mixed-effects model challenges our initial hypotheses regarding the impact of early-life risk factors and trauma on cortisol reactivity. This could be attributed to several factors:
+
+**Statistical Power and Sample Characteristics**: One possible explanation for the lack of significant findings could be related to statistical power. Although our sample size was adequate to detect moderate to large effects, it is possible that the true effects, if they exist, are smaller than our study was powered to detect. Additionally, the variability within our sample regarding exposure to trauma or the degree of supportiveness or harshness of parenting might not have been wide enough to capture subtle effects.
+
+**Measurement Issues**: The tools used to measure both parenting style and traumatic events might not have captured the nuances necessary to detect an influence on cortisol reactivity. Parenting style, for instance, was classified broadly as supportive or harsh without considering the consistency of parenting or the possible presence of other parenting styles that might mitigate or exacerbate the expected effects. Similarly, the measure of traumatic events might not have adequately captured the severity or emotional impact of these events on the child.
+
+**Developmental Timing**: The timing of the measurements could also be a factor. While we measured parenting style at age 3, developmental changes and other intervening experiences up to age 10 might dilute or alter the initial influence of early parenting. Similarly, the effect of traumatic events on physiological stress responses can vary depending on the proximity to the event, individual resilience, and available social support systems, none of which were controlled for in the current study.
+Confounding Variables: Other unmeasured variables such as genetic predispositions, social support, or concurrent stressors might have confounded the relationships explored. These factors could include familial mental health, or other environmental stressors not accounted for in our study.
+
+## Broader Implications
+
+Despite the non-significant findings, this study contributes to the ongoing discourse on the physiological impacts of early-life experiences and socio-economic factors. It underscores the need for more nuanced research approaches that consider complex interactions between genetic markers and environmental influences. Furthermore, the high variability in cortisol responses observed suggests that individual differences play a crucial role in stress physiology, advocating for personalized approaches in psychological and behavioral interventions.
+
+Future research should aim to incorporate more detailed longitudinal data, perhaps extending beyond the initial childhood years to capture long-term trends and delayed effects. Additionally, incorporating qualitative data could enrich the understanding of how perceived stress and coping mechanisms influence cortisol dynamics. Lastly, exploring machine learning techniques may unveil non-linear relationships and interactions that traditional statistical methods might overlook.
+
+# Conclusion
+In conclusion, this study highlights the complexities of studying cortisol reactivity and its predictors. The findings suggest a reconsideration of how early-life experiences are measured and suggest a potential reevaluation of the factors that significantly impact physiological stress responses over time.
+
+
