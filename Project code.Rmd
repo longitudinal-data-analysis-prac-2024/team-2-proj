@@ -17,7 +17,11 @@ library("lmerTest") # for p-values
 library("performance") # for ICC
 library("tibble")
 library("readr")
-data <- read.csv("CEDS.csv")
+install.packages("here")
+library(here)
+
+getwd()
+data <- read.csv(here("CEDS.csv"))
 theme_set(theme_bw(base_size = 15) + theme(legend.position="bottom"))
 str(data)
 summary(data)
@@ -37,26 +41,70 @@ if(length(missing_columns) > 0) {
 
 ```{r setup, creat a new dataset}
 # Create a new dataset, saliva7time is neglected because in the original document it is stated that the variability in this sample is too great, and it is not typically used.
-datasubset <- data %>%
+datasub <- data %>%
   select(ID, echrdpa, SESA, tleltpca, riskHI, Saliva1Time, Saliva2Time, Saliva3Time, Saliva4Time, Saliva5Time, Saliva6Time)
-print(datasubset)
-view(datasubset)
+print(datasub)
+view(datasub)
 ```
 
 ```{r setup}
 ##transform continuous riskHI to categorical riskgroup
-datasubset$riskgroup <- factor(datasubset$riskHI, levels = c(0, 1), labels = c("moderate_low_risk", "high_risk"))
-print(datasubset)
+datasub$riskgroup <- factor(datasub$riskHI, levels = c(0, 1), labels = c("moderate_low_risk", "high_risk"))
+print(datasub)
 ```
 
 ```{r setup}
-datasubset <- datasubset %>% 
+datasub <- datasub %>% 
   rename(financial_hardship = echrdpa,
          SES = SESA,
          trauma_lifetime = tleltpca)
-view(datasubset)
+view(datasub)
 ```
 
+```{r clean data}
+# Remove rows with NA values
+datasubset <- datasub %>% drop_na(ID, financial_hardship, SES, trauma_lifetime, riskHI, Saliva1Time, Saliva2Time, Saliva3Time, Saliva4Time, Saliva5Time, Saliva6Time)
+view(datasubset)
+
+# Visualizations
+# Histogram without NA values
+ggplot(datasubset, aes(x =Saliva1Time)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  ggtitle("Histogram 1 without NA values")
+
+ggplot(datasubset, aes(x =Saliva2Time)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  ggtitle("Histogram 2 without NA values")
+
+ggplot(datasubset, aes(x =Saliva3Time)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  ggtitle("Histogram 3 without NA values")
+
+ggplot(datasubset, aes(x =Saliva4Time)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  ggtitle("Histogram 4 without NA values")
+
+ggplot(datasubset, aes(x = Saliva5Time)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  ggtitle("Histogram 5 without NA values")
+
+ggplot(datasubset, aes(x =Saliva6Time)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  ggtitle("Histogram 6 without NA values")
+```
+
+
+```{r clean data}
+# Shapiro-Wilk test for normality (without NA values)
+results <- list()  # Create an empty list to store results
+columns <- c("Saliva1Time", "Saliva2Time", "Saliva3Time", "Saliva4Time", "Saliva5Time", "Saliva6Time")
+
+for (col in columns) {
+  results[[col]] <- shapiro.test(datasubset[[col]])
+}
+
+print(results)
+```
 
 ```{r setup}
 ## Descriptive stats
