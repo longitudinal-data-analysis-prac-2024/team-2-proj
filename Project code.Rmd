@@ -47,13 +47,12 @@ print(datasub)
 view(datasub)
 ```
 
-```{r setup}
-##transform continuous riskHI to categorical riskgroup
+```{r transform continuous riskHI to categorical riskgroup}
 datasub$riskgroup <- factor(datasub$riskHI, levels = c(0, 1), labels = c("moderate_low_risk", "high_risk"))
 print(datasub)
 ```
 
-```{r setup}
+```{r rename}
 datasub <- datasub %>% 
   rename(financial_hardship = echrdpa,
          SES = SESA,
@@ -96,7 +95,7 @@ ggplot(datasubset, aes(x =Saliva6Time)) +
 
 ```{r clean data}
 # Shapiro-Wilk test for normality (without NA values)
-results <- list()  # Create an empty list to store results
+results <- list() 
 columns <- c("Saliva1Time", "Saliva2Time", "Saliva3Time", "Saliva4Time", "Saliva5Time", "Saliva6Time")
 
 for (col in columns) {
@@ -178,7 +177,6 @@ ggplot(data_long, aes(riskgroup, distance, fill = measurement)) +
 ```
 
 ```{r a trajectory plot}
-
 summary_stats <- data_long %>%
   group_by(riskgroup, timepoint) %>%
   summarise(
@@ -203,21 +201,36 @@ write.xlsx(data_long, "my_data.xlsx")
 ```
 
 
-```{r model comparison}
-# interaction
-model_interaction <- lmer(distance ~ riskHI * trauma_lifetime + financial_hardship + SES+ (1|ID), data = data_long, REML = FALSE)
-# random slope
-model_random_slopes <- lmer(distance ~riskHI + trauma_lifetime + financial_hardship + SES + (1 + riskHI | ID), data = data_long, REML = FALSE)
-
-
-summary(model_interaction)
-summary(model_random_slopes)
-
-# comparison
-anova(model_interaction, model_random_slopes)
-
-# ICC
-
-icc(model_interaction)
-icc(model_random_slopes)
+```{r Log transformation}
+## To make it normally distributed
+data_long <- data_long %>%
+mutate(distance_log = log(distance+1)) 
 ```
+
+
+```{r models}
+# To test hypothesis 1: Effect of Parenting Style on Transformed Cortisol Reactivity
+model1 <- lmer(distance_log ~ riskHI + SES + financial_hardship + (1|ID), data = data_long)
+summary(model1)
+
+# To test hypothesis 2: Effect of Traumatic Events on Transformed Cortisol Reactivity
+model2 <- lmer(distance_log ~ trauma_lifetime + SES + financial_hardship + (1|ID), data = data_long)
+summary(model2)
+
+# To test hypothesis 3: Interaction Effect between Parenting Style and Traumatic Events on Transformed Cortisol Reactivity
+model3 <- lmer(distance_log ~ riskHI * trauma_lifetime + SES + financial_hardship + (1|ID), data = data_long)
+summary(model3)
+```
+
+```{r model comparison}
+anova(model1, model2, model3)
+
+icc_model1 <- icc(model1)
+icc_model2 <- icc(model2)
+icc_model3 <- icc(model3)
+
+print(icc_model1)
+print(icc_model2)
+print(icc_model3)
+```
+
