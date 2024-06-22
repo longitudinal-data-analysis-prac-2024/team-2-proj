@@ -48,7 +48,7 @@ Each round was followed by a prerecorded video message from the opponent with de
 
 # Results
 
-In our analysis of the impact of early childhood parenting styles and lifetime traumatic events on cortisol reactivity, we conducted a series of analyses using a well-defined cohort. The dataset, after verification of key variables and handling missing data, included measures of financial hardship, socio-economic status (SES), and trauma exposure, alongside cortisol measurements at multiple timepoints.
+In our analysis of the impact of early childhood parenting styles and lifetime traumatic events on cortisol reactivity, we conducted a series of analyses using a well-defined cohort. We removed data columns which contain N/A values. The dataset, after verification of key variables and handling missing data, included measures of financial hardship, socio-economic status (SES), and trauma exposure, alongside cortisol measurements at multiple timepoints.
 
 **Descriptive Statistics within Different Groups**
 
@@ -73,7 +73,7 @@ Descriptive statistics also revealed distinct patterns in cortisol levels across
 **Cortisol Levels Over Time**
 
 The longitudinal data format allowed us to assess cortisol levels over multiple timepoints. We observed that cortisol levels varied over time as showed below, with descriptive analysis indicating fluctuations in mean, standard deviation, minimum, maximum, and median levels.
-
+The cortisol data was not normally distributed. 
 
 **Table 2 Summary of Cortisol Level Changes Over Time**
 
