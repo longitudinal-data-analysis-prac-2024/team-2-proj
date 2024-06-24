@@ -64,8 +64,9 @@ view(datasub)
 # Remove rows with NA values
 datasubset <- datasub %>% drop_na(ID, financial_hardship, SES, trauma_lifetime, riskHI, Saliva1Time, Saliva2Time, Saliva3Time, Saliva4Time, Saliva5Time, Saliva6Time)
 view(datasubset)
+```
 
-# Visualizations
+```{r visualizations}
 # Histogram without NA values
 ggplot(datasubset, aes(x =Saliva1Time)) +
   geom_histogram(binwidth = 1, fill = "blue", color = "black") +
@@ -93,8 +94,7 @@ ggplot(datasubset, aes(x =Saliva6Time)) +
 ```
 
 
-```{r clean data}
-# Shapiro-Wilk test for normality (without NA values)
+```{r Shapiro-Wilk test for normality}
 results <- list() 
 columns <- c("Saliva1Time", "Saliva2Time", "Saliva3Time", "Saliva4Time", "Saliva5Time", "Saliva6Time")
 
@@ -130,15 +130,12 @@ descriptive_stats <- datasubset %>%
     sd_time6 = sd(Saliva6Time, na.rm = TRUE),
   )
 print(descriptive_stats)
-install.packages("openxlsx")
-library(openxlsx)
-write.xlsx(descriptive_stats, "~/Desktop/subset_data.xlsx")
 ```
 
 
 
 ```{r Create a longitudinal data format}
-install.packages("labelled") # labeling data
+install.packages("labelled") 
 library("labelled")
 data_long <- pivot_longer(datasubset, cols = starts_with("Saliva"), 
                             names_to = "measurement", values_to = "distance") %>% 
@@ -196,17 +193,11 @@ ggplot(summary_stats, aes(x = timepoint, y = mean_distance, color = riskgroup, s
   labs(x = "Timepoint", y = "Cortisol Level", color = "Risk Group", shape = "Risk Group")
 ```
 
-```{r a excel file of the long form data}
-write.xlsx(data_long, "my_data.xlsx")
-```
-
-
 ```{r Log transformation}
 ## To make it normally distributed
 data_long <- data_long %>%
 mutate(distance_log = log(distance+1)) 
 ```
-
 
 ```{r models}
 # To test hypothesis 1: Effect of Parenting Style on Transformed Cortisol Reactivity
