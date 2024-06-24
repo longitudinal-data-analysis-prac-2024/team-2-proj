@@ -50,7 +50,9 @@ Each round was followed by a prerecorded video message from the opponent with de
 
 # Results
 
-In our analysis of the impact of early childhood parenting styles and lifetime traumatic events on cortisol reactivity, we conducted a series of analyses using a well-defined cohort. We removed data columns which contain N/A values. The dataset, after verification of key variables and handling missing data, included measures of financial hardship, socio-economic status (SES), and trauma exposure, alongside cortisol measurements at multiple timepoints.
+In our investigation of the impact of early childhood parenting styles and lifetime traumatic events on cortisol reactivity, we conducted a series of rigorous analyses using a well-defined cohort. Initially, data columns containing N/A values were excluded to ensure data integrity. Following the verification of key variables and the management of missing data, the refined dataset encompassed measures of financial hardship, socio-economic status (SES), trauma exposure, and cortisol levels assessed at multiple time points.
+
+Subsequently, visualizations of the six cortisol-related variables revealed deviations from normal distribution patterns. This observation was quantitatively confirmed using the Shapiro-Wilk test, which yielded p-values significantly below the 0.05 threshold, indicating non-normality of the sample distributions. 
 
 **Descriptive Statistics within Different Groups**
 
@@ -106,14 +108,68 @@ Both risk groups display a similar range of variability in cortisol levels, as i
 ## Linear Mixed-Effects Modeling
 
 As the cortisol measurements were not normally distributed, we applied the logarithmic transformation to make it more normally distributed so it can fit with the linear mixed-effect model. 
-The model comparison indicated that there were no significant differences between the two models. The model with fixed slope and interaction demonstrated slightly better performance (AIC =5639.7, BIC =5685.4). Therefore, we selected this model for our analysis.
 
-A linear mixed-effects model was applied to explore the influences of parenting styles and lifetime trauma events on cortisol levels, with random effects accounting for variability across individuals. Financial hardship and SES are included as control variables in the model to account for their potential confounding effects.​
+### Model 1: Effect of Parenting Style on Transformed Cortisol Reactivity
+The first model examined the effect of parenting style (riskHI) on transformed cortisol reactivity (distance_log), controlling for SES and financial hardship. The model included a random intercept for ID to account for repeated measures.
 
-The model's AIC (0.87) and BIC (0.86) indicated a good fit relative to the complexity.
-However, fixed effects of lifetime trauma (p=.79), parenting style (p=.70) did not show significant impact on cortisol levels.
+Formula: distance_log ~ riskHI + SES + financial_hardship + (1|ID)
+REML criterion: -5771.9
+Random effects:
+Variance (ID): 0.009820
+Variance (Residual): 0.001411
+Fixed effects:
+Intercept: Estimate = 2.788, p < 2e-16
+riskHI: Estimate = 0.008619, p = 0.5252
+SES: Estimate = -0.000067, p = 0.9931
+Financial hardship: Estimate = 0.002950, p = 0.0396
+The results indicate that financial hardship significantly predicts transformed cortisol reactivity (p = 0.0396), while parenting style (riskHI) and SES do not show significant effects.
 
-There is also no significant interaction between lifetime trauma and parenting style (p=.69).​ Therefore the null hypotheses are accepted.
+### Model 2: Effect of Traumatic Events on Transformed Cortisol Reactivity
+The second model assessed the effect of lifetime traumatic events (trauma_lifetime) on transformed cortisol reactivity, controlling for SES and financial hardship.
+
+Formula: distance_log ~ trauma_lifetime + SES + financial_hardship + (1|ID)
+REML criterion: -5769.7
+Random effects:
+Variance (ID): 0.009820
+Variance (Residual): 0.001411
+Fixed effects:
+Intercept: Estimate = 2.7917, p < 2e-16
+Trauma_lifetime: Estimate = -0.002769, p = 0.5283
+SES: Estimate = -0.001632, p = 0.8373
+Financial hardship: Estimate = 0.003118, p = 0.0294
+The results indicate that financial hardship significantly predicts transformed cortisol reactivity (p = 0.0294), while lifetime traumatic events and SES do not show significant effects.
+
+### Model 3: Interaction Effect between Parenting Style and Traumatic Events on Transformed Cortisol Reactivity
+The third model investigated the interaction effect between parenting style (riskHI) and lifetime traumatic events (trauma_lifetime) on transformed cortisol reactivity, controlling for SES and financial hardship.
+
+Formula: distance_log ~ riskHI * trauma_lifetime + SES + financial_hardship + (1|ID)
+REML criterion: -5756.1
+Random effects:
+Variance (ID): 0.009860
+Variance (Residual): 0.001411
+Fixed effects:
+Intercept: Estimate = 2.7892, p < 2e-16
+RiskHI: Estimate = 0.016464, p = 0.3956
+Trauma_lifetime: Estimate = -0.001805, p = 0.7474
+SES: Estimate = -0.001088, p = 0.8917
+Financial hardship: Estimate = 0.003011, p = 0.0365
+RiskHI:trauma_lifetime: Estimate = -0.004035, p = 0.6530
+The results indicate that financial hardship significantly predicts transformed cortisol reactivity (p = 0.0365). However, neither parenting style, lifetime traumatic events, nor their interaction show significant effects.
+
+### Model Comparisons and Intraclass Correlation Coefficients
+We compared the three models using the Akaike Information Criterion (AIC) and Bayesian Information Criterion (BIC):
+
+Model 1: AIC = -5794.5, BIC = -5761.3
+Model 2: AIC = -5794.5, BIC = -5761.3
+Model 3: AIC = -5791.3, BIC = -5747.0
+The likelihood ratio test between models 2 and 3 (Chisq = 0.7807, p = 0.6768) indicates no significant improvement in model fit by including the interaction term.
+
+The Intraclass Correlation Coefficients (ICC) for the models were as follows:
+
+Model 1: Adjusted ICC = 0.874, Unadjusted ICC = 0.860
+Model 2: Adjusted ICC = 0.874, Unadjusted ICC = 0.860
+Model 3: Adjusted ICC = 0.875, Unadjusted ICC = 0.859
+The high ICC values suggest that a significant portion of the variance in cortisol reactivity is attributable to differences between individuals.
 
 # Discussion
 
