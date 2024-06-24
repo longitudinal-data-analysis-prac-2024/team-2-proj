@@ -1,9 +1,11 @@
 ---
 title: "project term 3"
-output: html_document
+output:
+  word_document: default
+  html_document: default
 date: "2024-05-28"
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 72
 ---
 
@@ -18,7 +20,7 @@ library("performance") # for ICC
 library("tibble")
 library("readr")
 install.packages("here")
-library(here)
+library("here")
 
 getwd()
 data <- read.csv(here("CEDS.csv"))
@@ -27,7 +29,7 @@ str(data)
 summary(data)
 ```
 
-```{r setup, get required columns and identify missing ons}
+```{r get required columns and identify missing ons}
 required_columns <- c(
   "ID", "riskHI", "tleltpca", "Saliva1Time", "Saliva2Time", "Saliva3Time", "Saliva4Time", "Saliva5Time", "Saliva6Time",
   "echrdpa", "SESA"
@@ -39,7 +41,7 @@ if(length(missing_columns) > 0) {
 }
 ```
 
-```{r setup, creat a new dataset}
+```{r creat a new dataset}
 # Create a new dataset, saliva7time is neglected because in the original document it is stated that the variability in this sample is too great, and it is not typically used.
 datasub <- data %>%
   select(ID, echrdpa, SESA, tleltpca, riskHI, Saliva1Time, Saliva2Time, Saliva3Time, Saliva4Time, Saliva5Time, Saliva6Time)
@@ -105,8 +107,7 @@ for (col in columns) {
 print(results)
 ```
 
-```{r setup}
-## Descriptive stats
+```{r Descriptive stats}
 descriptive_stats <- datasubset %>%
   group_by(riskgroup) %>%
   summarize(
